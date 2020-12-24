@@ -298,15 +298,10 @@ class DataBase_JSON:
 
     # --------- ---------
 
-    def addClient(self,ObjClient):  
-        if(type(ObjClient) == type(Client)): self.__Client.append(ObjClient)
-
-    def addRoute(self,ObjRoute): 
-        if(type(ObjRoute) == type(Route)): self.__Route.append(ObjRoute)
-
-    def addVouchers(self, ID, ObjRoute, ObjClient, Date, Count, Discount):
-        if(type(ObjClient) == type(Client) and type(ObjRoute) == type(Route)): 
-            self.__Vouchers.append(Vouchers(ID, ObjRoute, ObjClient, Date, Count, Discount))
+    def addClient(self,ObjClient): self.__Client.append(ObjClient)
+    def addRoute(self,ObjRoute): self.__Route.append(ObjRoute)
+    def addVouchers(self, ID, ObjRoute, ObjClient, Date, Count, Discount): 
+        self.__Vouchers.append(Vouchers(ID, ObjRoute, ObjClient, Date, Count, Discount))
 
     # ---------
 
@@ -361,31 +356,31 @@ class DataBase_SQLite:
         DataBase.commit()
 
         MyClietn    = [ [
-            self.__Client.getByID(I).getID(),
-            self.__Client.getByID(I).getFName(),
-            self.__Client.getByID(I).getNName(),
-            self.__Client.getByID(I).getOName(), 
-            self.__Client.getByID(I).getAdr(),
-            self.__Client.getByID(I).getNumer()
+            self.__Client[I].getID(),
+            self.__Client[I].getFName(),
+            self.__Client[I].getNName(),
+            self.__Client[I].getOName(), 
+            self.__Client[I].getAdr(),
+            self.__Client[I].getNumer()
             ] for I in range(len(self.__Client)) ]
 
 
         MyRoute     = [ [
-            self.__Route.getByID(I).getID(),
-            self.__Route.getByID(I).getRegion(),
-            self.__Route.getByID(I).getClimate(),
-            self.__Route.getByID(I).getLong(), 
-            self.__Route.getByID(I).getHotel(),
-            self.__Route.getByID(I).getMoney()
+            self.__Route[I].getID(),
+            self.__Route[I].getRegion(),
+            self.__Route[I].getClimate(),
+            self.__Route[I].getLong(), 
+            self.__Route[I].getHotel(),
+            self.__Route[I].getMoney()
             ] for I in range(len(self.__Route)) ] 
         
         MyVouchers  = [ [
-            self.__Vouchers.getByID(I).getID(),
-            self.__Vouchers.getByID(I).getRoute().getID(),
-            self.__Vouchers.getByID(I).getClient().getID(),
-            self.__Vouchers.getByID(I).getDate(), 
-            self.__Vouchers.getByID(I).getCount(),
-            self.__Vouchers.getByID(I).getDiscount()
+            self.__Vouchers[I].getID(),
+            self.__Vouchers[I].getRoute().getID(),
+            self.__Vouchers[I].getClient().getID(),
+            self.__Vouchers[I].getDate(), 
+            self.__Vouchers[I].getCount(),
+            self.__Vouchers[I].getDiscount()
             ] for I in range(len(self.__Vouchers)) ]
 
 
@@ -465,15 +460,10 @@ class DataBase_SQLite:
 
     # --------- ---------
 
-    def addClient(self,ObjClient):  
-        if(type(ObjClient) == type(Client)): self.__Client.append(ObjClient)
-
-    def addRoute(self,ObjRoute): 
-        if(type(ObjRoute) == type(Route)): self.__Route.append(ObjRoute)
-
-    def addVouchers(self, ID, ObjRoute, ObjClient, Date, Count, Discount):
-        if(type(ObjClient) == type(Client) and type(ObjRoute) == type(Route)): 
-            self.__Vouchers.append(Vouchers(ID, ObjRoute, ObjClient, Date, Count, Discount))
+    def addClient(self,ObjClient): self.__Client.append(ObjClient)
+    def addRoute(self,ObjRoute): self.__Route.append(ObjRoute)
+    def addVouchers(self, ID, ObjRoute, ObjClient, Date, Count, Discount): 
+        self.__Vouchers.append(Vouchers(ID, ObjRoute, ObjClient, Date, Count, Discount))
 
     # ---------
 

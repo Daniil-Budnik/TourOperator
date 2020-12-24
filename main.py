@@ -73,16 +73,15 @@ def Task_3():
     BD = Tour.DataBase_SQLite("MyDataBase.db")
 
     # Выводим всю информацию
-    #print("\n\n\t>> Клиенты: <<\n")
-    #for Count in BD.getClient(): print(Count,'\n')
-    #
-    #print("\n\n\t>> Маршруты: <<\n")
-    #for Count in BD.getRoute(): print(Count,'\n')
-    #
-    #print("\n\n\t>> Путёвки: <<\n")
-    #for Count in BD.getVouchers(): print(Count,'\n')
-
+    print("\n\n\t>> Клиенты: <<\n")
+    for Count in BD.getClient(): print(Count,'\n')
+    
+    print("\n\n\t>> Маршруты: <<\n")
+    for Count in BD.getRoute(): print(Count,'\n')
+    
+    print("\n\n\t>> Путёвки: <<\n")
     for Count in BD.getVouchers(): print(Count,'\n')
+
 
 # --------------------------------------------------------------------------------------------------
 

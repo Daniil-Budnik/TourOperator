@@ -185,18 +185,16 @@ class DataBase_JSON:
     # ---------
 
     def WriteFile(self, FileName): 
-        if os.path.exists(FileName):
-           raise RuntimeError("file already exists")
 
-        if file_name.endswith(".json"):
+        if FileName.endswith(".json"):
 
             L_Clients = []
             for item in self.__Client:
                 CL = {
                     "ID": item.getID(),
-                    "Фамилия": item.getFNAME(),
-                    "Имя": item.getNNAME() ,
-                    "Отчество": item.getONAME(),
+                    "Фамилия": item.getFName(),
+                    "Имя": item.getNName() ,
+                    "Отчество": item.getOName(),
                     "Адрес": item.getAdr(),
                     "Тел": item.getNumer()
                 }
@@ -233,7 +231,7 @@ class DataBase_JSON:
                 "Vouchers": L_Vouchers
             }
 
-            with open(FileName, "w") as Output: json.dump(Data, Output, indent=4)
+            with open(FileName, "w") as Output: JS.dump(Data, Output)
 
     # ---------
 
@@ -300,8 +298,7 @@ class DataBase_JSON:
 
     def addClient(self,ObjClient): self.__Client.append(ObjClient)
     def addRoute(self,ObjRoute): self.__Route.append(ObjRoute)
-    def addVouchers(self, ID, ObjRoute, ObjClient, Date, Count, Discount): 
-        self.__Vouchers.append(Vouchers(ID, ObjRoute, ObjClient, Date, Count, Discount))
+    def addVouchers(self, ObjVouchers): self.__Vouchers.append(ObjVouchers)
 
     # ---------
 
@@ -462,8 +459,7 @@ class DataBase_SQLite:
 
     def addClient(self,ObjClient): self.__Client.append(ObjClient)
     def addRoute(self,ObjRoute): self.__Route.append(ObjRoute)
-    def addVouchers(self, ID, ObjRoute, ObjClient, Date, Count, Discount): 
-        self.__Vouchers.append(Vouchers(ID, ObjRoute, ObjClient, Date, Count, Discount))
+    def addVouchers(self, ObjVouchers): self.__Vouchers.append(ObjVouchers)
 
     # ---------
 

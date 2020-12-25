@@ -7,8 +7,8 @@ import TourOperator as Tour
 # --------------------------------------------------------------------------------------------------
 
 def Task_1(): 
-
-    print("\t >>> ЗАДАЧА 1 <<<")
+    print("========================================================")
+    print("\n\t >>> ЗАДАЧА 1 <<<")
 
     # Генерируем БД
 
@@ -44,8 +44,8 @@ def Task_1():
 # --------------------------------------------------------------------------------------------------
 
 def Task_2():
-
-    print("\t >>> ЗАДАЧА 2 <<<")
+    print("========================================================")
+    print("\n\t >>> ЗАДАЧА 2 <<<")
 
     # Считываем БД с json
     BD = Tour.DataBase_JSON("Data.json")
@@ -60,11 +60,42 @@ def Task_2():
     print("\n\n\t>> Путёвки: <<\n")
     for Count in BD.getVouchers(): print(Count,'\n')
 
+    print("========================================================")
+
+    # Создаём новые данные
+    Cl = Tour.Client(4,"G","B","D","S","48")
+    Rl = Tour.Route(4,"d","B","D","S","5000")
+    Vl = Tour.Vouchers(4,Rl,Cl,"D","S","48")
+
+    # Добавляем
+    BD.addClient(Cl)
+    BD.addRoute(Rl)
+    BD.addVouchers(Vl)
+
+    # Записываем
+    BD.WriteFile("New.json")
+
+    # Чистим
+    BD.Clear()
+
+    # Читаем
+    BD.ReadFile("New.json")
+
+    # Выводим всю информацию
+    print("\n\n\t>> Клиенты: <<\n")
+    for Count in BD.getClient(): print(Count,'\n')
+    
+    print("\n\n\t>> Маршруты: <<\n")
+    for Count in BD.getRoute(): print(Count,'\n')
+    
+    print("\n\n\t>> Путёвки: <<\n")
+    for Count in BD.getVouchers(): print(Count,'\n')
+
 # --------------------------------------------------------------------------------------------------
 
 def Task_3(): 
-
-    print("\t >>> ЗАДАЧА 3 <<<")
+    print("========================================================")
+    print("\n\t >>> ЗАДАЧА 3 <<<")
     
     # Если база данных не создана, генерируем тестовые данные
     import GenSQL
@@ -81,16 +112,46 @@ def Task_3():
     
     print("\n\n\t>> Путёвки: <<\n")
     for Count in BD.getVouchers(): print(Count,'\n')
+    
+    print("========================================================")
+
+
+     # Создаём новые данные
+    Cl = Tour.Client(4,"G","B","D","S","48")
+    Rl = Tour.Route(4,"d","B","D","S","5000")
+    Vl = Tour.Vouchers(4,Rl,Cl,"D","S","48")
+
+    # Добавляем
+    BD.addClient(Cl)
+    BD.addRoute(Rl)
+    BD.addVouchers(Vl)
+
+    # Записываем
+    BD.WriteFile("New.db")
+
+    # Чистим
+    BD.Clear()
+
+    # Читаем
+    BD.ReadFile("New.db")
+
+    # Выводим всю информацию
+    print("\n\n\t>> Клиенты: <<\n")
+    for Count in BD.getClient(): print(Count,'\n')
+    
+    print("\n\n\t>> Маршруты: <<\n")
+    for Count in BD.getRoute(): print(Count,'\n')
+    
+    print("\n\n\t>> Путёвки: <<\n")
+    for Count in BD.getVouchers(): print(Count,'\n')
 
 
 # --------------------------------------------------------------------------------------------------
 
 def Main():
 
-    # Для вывода конкретной задачи, раскоментируй конкретную функцю!!!
-
-    #Task_1()
-    #Task_2()
+    Task_1()
+    Task_2()
     Task_3()
 
 # --------------------------------------------------------------------------------------------------

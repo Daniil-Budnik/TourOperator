@@ -126,6 +126,9 @@ def Task_3():
     BD.addRoute(Rl)
     BD.addVouchers(Vl)
 
+    # Удаляем один случайный элемент
+    BD.removeVouchers(1)
+
     # Записываем
     BD.WriteFile("New.db")
 
@@ -150,8 +153,8 @@ def Task_3():
 
 def Main():
 
-    Task_1()
-    Task_2()
+    #Task_1()
+    #Task_2()
     Task_3()
 
 # --------------------------------------------------------------------------------------------------

@@ -296,9 +296,46 @@ class DataBase_JSON:
 
     # --------- ---------
 
-    def addClient(self,ObjClient): self.__Client.append(ObjClient)
-    def addRoute(self,ObjRoute): self.__Route.append(ObjRoute)
-    def addVouchers(self, ObjVouchers): self.__Vouchers.append(ObjVouchers)
+    def addClient(self,ObjClient): 
+       for ITEM in self.__Client:
+           if(ITEM.getID() == ObjClient.getID()) : return 0
+       self.__Client.append(ObjClient)
+
+    def addRoute(self,ObjRoute): 
+        for ITEM in self.__Route:
+           if(ITEM.getID() == ObjRoute.getID()) : return 0
+        self.__Route.append(ObjRoute)
+
+    def addVouchers(self, ObjVouchers): 
+        for ITEM in self.__Vouchers:
+           if(ITEM.getID() == ObjVouchers.getID()) : return 0
+        self.__Vouchers.append(ObjVouchers)
+
+    # ---------
+
+    def removeClient(self,ID): 
+        N = 0
+        for ITEM in self.__Client:
+            if(ITEM.getID() == ID): 
+                self.__Client.pop(N)
+                return 0
+            N+=1
+       
+    def removeRoute(self,ID): 
+        N = 0
+        for ITEM in self.__Route:
+            if(ITEM.getID() == ID): 
+                self.__Route.pop(N)
+                return 0
+            N+=1
+
+    def removeVouchers(self, ID): 
+        N = 0
+        for ITEM in self.__Vouchers:
+            if(ITEM.getID() == ID): 
+                self.__Vouchers.pop(N)
+                return 0
+            N+=1
 
     # ---------
 
@@ -380,7 +417,6 @@ class DataBase_SQLite:
             self.__Vouchers[I].getDiscount()
             ] for I in range(len(self.__Vouchers)) ]
 
-
         for ID in range(len(MyClietn)): 
             SQLite.execute(f"SELECT ID FROM Client WHERE ID = {MyClietn[ID][0]}")
             if SQLite.fetchone() is None:
@@ -457,9 +493,46 @@ class DataBase_SQLite:
 
     # --------- ---------
 
-    def addClient(self,ObjClient): self.__Client.append(ObjClient)
-    def addRoute(self,ObjRoute): self.__Route.append(ObjRoute)
-    def addVouchers(self, ObjVouchers): self.__Vouchers.append(ObjVouchers)
+    def addClient(self,ObjClient): 
+       for ITEM in self.__Client:
+           if(ITEM.getID() == ObjClient.getID()) : return 0
+       self.__Client.append(ObjClient)
+
+    def addRoute(self,ObjRoute): 
+        for ITEM in self.__Route:
+           if(ITEM.getID() == ObjRoute.getID()) : return 0
+        self.__Route.append(ObjRoute)
+
+    def addVouchers(self, ObjVouchers): 
+        for ITEM in self.__Vouchers:
+           if(ITEM.getID() == ObjVouchers.getID()) : return 0
+        self.__Vouchers.append(ObjVouchers)
+
+    # ---------
+
+    def removeClient(self,ID): 
+        N = 0
+        for ITEM in self.__Client:
+            if(ITEM.getID() == ID): 
+                self.__Client.pop(N)
+                return 0
+            N+=1
+       
+    def removeRoute(self,ID): 
+        N = 0
+        for ITEM in self.__Route:
+            if(ITEM.getID() == ID): 
+                self.__Route.pop(N)
+                return 0
+            N+=1
+
+    def removeVouchers(self, ID): 
+        N = 0
+        for ITEM in self.__Vouchers:
+            if(ITEM.getID() == ID): 
+                self.__Vouchers.pop(N)
+                return 0
+            N+=1
 
     # ---------
 

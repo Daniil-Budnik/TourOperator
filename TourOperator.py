@@ -317,6 +317,10 @@ class DataBase_JSON:
         N = 0
         for ITEM in self.__Client:
             if(ITEM.getID() == ID): 
+                for I in self.__Vouchers:
+                    if(I.getClient() == ITEM):
+                        print("ERROR: Ошибка удаления")
+                        return 0
                 self.__Client.pop(N)
                 return 0
             N+=1
@@ -324,7 +328,11 @@ class DataBase_JSON:
     def removeRoute(self,ID): 
         N = 0
         for ITEM in self.__Route:
-            if(ITEM.getID() == ID): 
+            if(ITEM.getID() == ID):
+                for I in self.__Vouchers:
+                    if(I.getRoute() == ITEM):
+                        print("ERROR: Ошибка удаления")
+                        return 0
                 self.__Route.pop(N)
                 return 0
             N+=1
@@ -514,6 +522,10 @@ class DataBase_SQLite:
         N = 0
         for ITEM in self.__Client:
             if(ITEM.getID() == ID): 
+                for I in self.__Vouchers:
+                    if(I.getClient() == ITEM):
+                        print("ERROR: Ошибка удаления")
+                        return 0
                 self.__Client.pop(N)
                 return 0
             N+=1
@@ -521,7 +533,11 @@ class DataBase_SQLite:
     def removeRoute(self,ID): 
         N = 0
         for ITEM in self.__Route:
-            if(ITEM.getID() == ID): 
+            if(ITEM.getID() == ID):
+                for I in self.__Vouchers:
+                    if(I.getRoute() == ITEM):
+                        print("ERROR: Ошибка удаления")
+                        return 0
                 self.__Route.pop(N)
                 return 0
             N+=1

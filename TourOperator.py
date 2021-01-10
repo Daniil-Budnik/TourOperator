@@ -201,7 +201,6 @@ class DataBase:
 
      # --------- 
 
-    def setID(self,value,ID):      self.__Client[ID].setID(value)
     def setFName(self,value,ID):   self.__Client[ID].setFName(value)
     def setNName(self,value,ID):   self.__Client[ID].setNName(value)
     def setOName(self,value,ID):   self.__Client[ID].setOName(value)
@@ -210,7 +209,6 @@ class DataBase:
     
     # ---------    
     
-    def getID(self,ID):            return self.__Client[ID].getID()
     def getFName(self,ID):         return self.__Client[ID].getFName()
     def getNName(self,ID):         return self.__Client[ID].getNName()
     def getOName(self,ID):         return self.__Client[ID].getOName()
@@ -218,8 +216,7 @@ class DataBase:
     def getNumer(self,ID):         return self.__Client[ID].getNumer()
 
     # --------- ---------
-
-    def setID(self,value,ID):      self.__Route[ID].setID(value,ID)      
+  
     def setRegion(self,value,ID):  self.__Route[ID].setRegion(value,ID)  
     def setClimate(self,value,ID): self.__Route[ID].setClimate(value,ID) 
     def setLong(self,value,ID):    self.__Route[ID].setLong(value,ID)   
@@ -228,7 +225,6 @@ class DataBase:
      
     # ---------
 
-    def getID(self,ID):            return self.__Route[ID].getID()   
     def getRegion(self,ID):        return self.__Route[ID].getRegion()
     def getClimate(self,ID):       return self.__Route[ID].getClimate()
     def getLong(self,ID):          return self.__Route[ID].getLong()  
@@ -236,22 +232,20 @@ class DataBase:
     def getMoney(self,ID):         return self.__Route[ID].getMoney() 
 
     # --------- ---------
-
-    def setID(self,ID,value):          self.Vouchers[ID].setID(ID,value)    
-    def setRoute(self,ID,value):       self.Vouchers[ID].setRoute(ID,value)  
-    def setClient(self,ID,value):      self.Vouchers[ID].setClient(ID,value) 
-    def setDate(self,ID,value):        self.Vouchers[ID].setDate(ID,value)
-    def setCount(self,ID,value):       self.Vouchers[ID].setCount(ID,value) 
-    def setDiscount(self,ID,value):    self.Vouchers[ID].setDiscount(ID,value)
+  
+    def setRoute(self,ID,value):       self.__Vouchers[ID].setRoute(ID,value)  
+    def setClient(self,ID,value):      self.__Vouchers[ID].setClient(ID,value) 
+    def setDate(self,ID,value):        self.__Vouchers[ID].setDate(ID,value)
+    def setCount(self,ID,value):       self.__Vouchers[ID].setCount(ID,value) 
+    def setDiscount(self,ID,value):    self.__Vouchers[ID].setDiscount(ID,value)
      
     # ---------
-
-    def getID(self,ID):                return self.Vouchers[ID].getID()       
-    def getRoute(self,ID):             return self.Vouchers[ID].getRoute()   
-    def getClient(self,ID):            return self.Vouchers[ID].getClient() 
-    def getDate(self,ID):              return self.Vouchers[ID].getDate()     
-    def getCount(self,ID):             return self.Vouchers[ID].getCount()   
-    def getDiscount(self,ID):          return self.Vouchers[ID].getDiscount() 
+      
+    def getRoute(self,ID):             return self.__Vouchers[ID].getRoute()   
+    def getClient(self,ID):            return self.__Vouchers[ID].getClient() 
+    def getDate(self,ID):              return self.__Vouchers[ID].getDate()     
+    def getCount(self,ID):             return self.__Vouchers[ID].getCount()   
+    def getDiscount(self,ID):          return self.__Vouchers[ID].getDiscount() 
 
     # --------- ---------
 

@@ -55,13 +55,13 @@ def Task_2():
 
     # Выводим всю информацию
     print("\n\n\t>> Клиенты: <<\n")
-    for Count in BD.getClient(): print(Count,'\n')
+    for Count in BD.getClientList(): print(Count,'\n')
     
     print("\n\n\t>> Маршруты: <<\n")
-    for Count in BD.getRoute(): print(Count,'\n')
+    for Count in BD.getRouteList(): print(Count,'\n')
     
     print("\n\n\t>> Путёвки: <<\n")
-    for Count in BD.getVouchers(): print(Count,'\n')
+    for Count in BD.getVouchersList(): print(Count,'\n')
 
     print("========================================================")
 
@@ -79,6 +79,9 @@ def Task_2():
     # (должно вылези предуприждение, т.к. объект используется в другом классе)
     BD.removeClient(4)
 
+    # Просто должен удалить объект
+    BD.removeVouchers(1)
+
     # Записываем
     BD.WriteFile("New.json")
 
@@ -90,13 +93,13 @@ def Task_2():
 
     # Выводим всю информацию
     print("\n\n\t>> Клиенты: <<\n")
-    for Count in BD.getClient(): print(Count,'\n')
+    for Count in BD.getClientList(): print(Count,'\n')
     
     print("\n\n\t>> Маршруты: <<\n")
-    for Count in BD.getRoute(): print(Count,'\n')
+    for Count in BD.getRouteList(): print(Count,'\n')
     
     print("\n\n\t>> Путёвки: <<\n")
-    for Count in BD.getVouchers(): print(Count,'\n')
+    for Count in BD.getVouchersList(): print(Count,'\n')
 
 # --------------------------------------------------------------------------------------------------
 
@@ -114,13 +117,13 @@ def Task_3():
 
     # Выводим всю информацию
     print("\n\n\t>> Клиенты: <<\n")
-    for Count in BD.getClient(): print(Count,'\n')
+    for Count in BD.getClientList(): print(Count,'\n')
     
     print("\n\n\t>> Маршруты: <<\n")
-    for Count in BD.getRoute(): print(Count,'\n')
+    for Count in BD.getRouteList(): print(Count,'\n')
     
     print("\n\n\t>> Путёвки: <<\n")
-    for Count in BD.getVouchers(): print(Count,'\n')
+    for Count in BD.getVouchersList(): print(Count,'\n')
     
     print("========================================================")
 
@@ -149,13 +152,13 @@ def Task_3():
 
     # Выводим всю информацию
     print("\n\n\t>> Клиенты: <<\n")
-    for Count in BD.getClient(): print(Count,'\n')
+    for Count in BD.getClientList(): print(Count,'\n')
     
     print("\n\n\t>> Маршруты: <<\n")
-    for Count in BD.getRoute(): print(Count,'\n')
+    for Count in BD.getRouteList(): print(Count,'\n')
     
     print("\n\n\t>> Путёвки: <<\n")
-    for Count in BD.getVouchers(): print(Count,'\n')
+    for Count in BD.getVouchersList(): print(Count,'\n')
 
 # --------------------------------------------------------------------------------------------------
 
@@ -173,13 +176,13 @@ def Task_4():
 
     # Выводим всю информацию
     print("\n\n\t>> Клиенты: <<\n")
-    for Count in BD.getClient(): print(Count,'\n')
+    for Count in BD.getClientList(): print(Count,'\n')
     
     print("\n\n\t>> Маршруты: <<\n")
-    for Count in BD.getRoute(): print(Count,'\n')
+    for Count in BD.getRouteList(): print(Count,'\n')
     
     print("\n\n\t>> Путёвки: <<\n")
-    for Count in BD.getVouchers(): print(Count,'\n')
+    for Count in BD.getVouchersList(): print(Count,'\n')
     
     print("========================================================")
 
@@ -189,31 +192,19 @@ def Task_4():
     # Импортируем базу данных из одно класса в другой
     NewBD.ImportDataBase(BD) 
 
-    # Следующие 3 операции бессмысленны, конкретно в данном случае.
-    # Если их закоментировать, ничего не измениться, просто демонстрирую возможность работы...
-
-    # Записываем
-    BD.WriteFile("NewImport.json")
-
-    # Чистим
-    BD.Clear()
-
-    # Читаем
-    BD.ReadFile("NewImport.json")
-
     # Выводим что получится, ничего измениться не должно
 
     print("\n\t >>> КОНВЕРТИРОВАННАЯ БАЗА ДАННЫХ <<<")
 
     # Выводим всю информацию
     print("\n\n\t>> Клиенты: <<\n")
-    for Count in NewBD.getClient(): print(Count,'\n')
+    for Count in NewBD.getClientList(): print(Count,'\n')
     
     print("\n\n\t>> Маршруты: <<\n")
-    for Count in NewBD.getRoute(): print(Count,'\n')
+    for Count in NewBD.getRouteList(): print(Count,'\n')
     
     print("\n\n\t>> Путёвки: <<\n")
-    for Count in NewBD.getVouchers(): print(Count,'\n')
+    for Count in NewBD.getVouchersList(): print(Count,'\n')
 
 # --------------------------------------------------------------------------------------------------
 
@@ -221,9 +212,9 @@ def Main():
 
     print("\t<<\tStart\t>>\t\n")
 
-    #Task_1()       # Пример работы базовых классов
-    #Task_2()       # Пример работы чтения и записи JSON
-    #Task_3()       # Пример работы чтения и записи SQL
+    Task_1()       # Пример работы базовых классов
+    Task_2()       # Пример работы чтения и записи JSON
+    Task_3()       # Пример работы чтения и записи SQL
     Task_4()       # Пример работы импорта данных из SQL в JSON
 
 # --------------------------------------------------------------------------------------------------

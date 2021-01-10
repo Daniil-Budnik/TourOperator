@@ -7,6 +7,15 @@ import sqlite3 as SQL
 
 # --------------------------------------------------------------------------------------------------
 
+# Класс хранения объектов
+class DataList(list):
+  def getByID(self, id):
+        for item in self:
+              if item.getID() == id: return item
+        else: return None 
+
+# --------------------------------------------------------------------------------------------------
+
 # Клиент
 class Client:
 
@@ -44,14 +53,6 @@ class Client:
 
 # --------------------------------------------------------------------------------------------------
 
-class ClientList(list):
-  def getByID(self, id):
-        for item in self:
-              if item.getID() == id: return item
-        else: return None 
-
-# --------------------------------------------------------------------------------------------------
-
 # Маршрут
 class Route:
 
@@ -86,14 +87,6 @@ class Route:
     def __str__(self):
         return "ID: {}\nРегион: {}\nКлимат: {}\nДлительность: {}\nОтель: {}\nСтоимость: {} ".format(
             self.__ID, self.__Region, self.__Climate, self.__Long, self.__Hotel, self.__Money )
-
-# --------------------------------------------------------------------------------------------------
-
-class RouteList(list):
-  def getByID(self, id):
-        for item in self:
-              if item.getID() == id: return item
-        else: return None 
 
 # --------------------------------------------------------------------------------------------------
 
@@ -139,15 +132,7 @@ class Vouchers:
 
     def __str__(self):
         return "ID: {}\nМаршрут: {}\nКлиент: {}\nДата: {}\nКол-во человек: {}\nСкидка: {} ".format(
-            self.__ID, self.__Route, self.__Client, self.__Date, self.__Count, self.__Discount )
-
-# --------------------------------------------------------------------------------------------------
-
-class VouchersList(list):
-  def getByID(self, id):
-        for item in self:
-              if item.getID() == id: return item
-        else: return None 
+            self.__ID, self.__Route, self.__Client, self.__Date, self.__Count, self.__Discount ) 
 
 # --------------------------------------------------------------------------------------------------
 
@@ -155,9 +140,9 @@ class VouchersList(list):
 class DataBase:
 
     def __init__(self):
-        self.__Client =     ClientList()
-        self.__Route =      RouteList()
-        self.__Vouchers =   VouchersList()
+        self.__Client =     DataList()
+        self.__Route =      DataList()
+        self.__Vouchers =   DataList()
 
      # --------- 
 
@@ -191,61 +176,67 @@ class DataBase:
 
     # ---------
 
+    def getClientList(self):                return self.__Client
+    def getRouteList(self):                 return self.__Route
+    def getVouchersList(self):              return self.__Vouchers 
+
+    # ---------
+
     def setClientDataBase(self, value):     self.__Client = value
     def setRouteDataBase(self, value):      self.__Route = value
     def setVouchersDataBase(self, value):   self.__Vouchers = value
 
-    def getClientDataBase(self):     return self.__Client
-    def getRouteDataBase(self):      return self.__Route
-    def getVouchersDataBase(self):   return self.__Vouchers
+    def getClientDataBase(self):            return self.__Client
+    def getRouteDataBase(self):             return self.__Route
+    def getVouchersDataBase(self):          return self.__Vouchers
 
      # --------- 
 
-    def setFName(self,value,ID):   self.__Client[ID].setFName(value)
-    def setNName(self,value,ID):   self.__Client[ID].setNName(value)
-    def setOName(self,value,ID):   self.__Client[ID].setOName(value)
-    def setAdr(self,value,ID):     self.__Client[ID].setAdr(value)
-    def setNumer(self,value,ID):   self.__Client[ID].setNumer(value)
+    def setFName(self,value,ID):            self.__Client[ID].setFName(value)
+    def setNName(self,value,ID):            self.__Client[ID].setNName(value)
+    def setOName(self,value,ID):            self.__Client[ID].setOName(value)
+    def setAdr(self,value,ID):              self.__Client[ID].setAdr(value)
+    def setNumer(self,value,ID):            self.__Client[ID].setNumer(value)
     
     # ---------    
     
-    def getFName(self,ID):         return self.__Client[ID].getFName()
-    def getNName(self,ID):         return self.__Client[ID].getNName()
-    def getOName(self,ID):         return self.__Client[ID].getOName()
-    def getAdr(self,ID):           return self.__Client[ID].getAdr()
-    def getNumer(self,ID):         return self.__Client[ID].getNumer()
+    def getFName(self,ID):                  return self.__Client[ID].getFName()
+    def getNName(self,ID):                  return self.__Client[ID].getNName()
+    def getOName(self,ID):                  return self.__Client[ID].getOName()
+    def getAdr(self,ID):                    return self.__Client[ID].getAdr()
+    def getNumer(self,ID):                  return self.__Client[ID].getNumer()
 
     # --------- ---------
   
-    def setRegion(self,value,ID):  self.__Route[ID].setRegion(value)  
-    def setClimate(self,value,ID): self.__Route[ID].setClimate(value) 
-    def setLong(self,value,ID):    self.__Route[ID].setLong(value)   
-    def setHotel(self,value,ID):   self.__Route[ID].setHotel(value)  
-    def setMoney(self,value,ID):   self.__Route[ID].setMoney(value) 
+    def setRegion(self,value,ID):           self.__Route[ID].setRegion(value)  
+    def setClimate(self,value,ID):          self.__Route[ID].setClimate(value) 
+    def setLong(self,value,ID):             self.__Route[ID].setLong(value)   
+    def setHotel(self,value,ID):            self.__Route[ID].setHotel(value)  
+    def setMoney(self,value,ID):            self.__Route[ID].setMoney(value) 
      
     # ---------
 
-    def getRegion(self,ID):        return self.__Route[ID].getRegion()
-    def getClimate(self,ID):       return self.__Route[ID].getClimate()
-    def getLong(self,ID):          return self.__Route[ID].getLong()  
-    def getHotel(self,ID):         return self.__Route[ID].getHotel() 
-    def getMoney(self,ID):         return self.__Route[ID].getMoney() 
+    def getRegion(self,ID):                 return self.__Route[ID].getRegion()
+    def getClimate(self,ID):                return self.__Route[ID].getClimate()
+    def getLong(self,ID):                   return self.__Route[ID].getLong()  
+    def getHotel(self,ID):                  return self.__Route[ID].getHotel() 
+    def getMoney(self,ID):                  return self.__Route[ID].getMoney() 
 
     # --------- ---------
   
-    def setRoute(self,ID,value):       self.__Vouchers[ID].setRoute(value)  
-    def setClient(self,ID,value):      self.__Vouchers[ID].setClient(value) 
-    def setDate(self,ID,value):        self.__Vouchers[ID].setDate(value)
-    def setCount(self,ID,value):       self.__Vouchers[ID].setCount(value) 
-    def setDiscount(self,ID,value):    self.__Vouchers[ID].setDiscount(value)
+    def setRoute(self,ID,value):            self.__Vouchers[ID].setRoute(value)  
+    def setClient(self,ID,value):           self.__Vouchers[ID].setClient(value) 
+    def setDate(self,ID,value):             self.__Vouchers[ID].setDate(value)
+    def setCount(self,ID,value):            self.__Vouchers[ID].setCount(value) 
+    def setDiscount(self,ID,value):         self.__Vouchers[ID].setDiscount(value)
      
     # ---------
       
-    def getRoute(self,ID):             return self.__Vouchers[ID].getRoute()   
-    def getClient(self,ID):            return self.__Vouchers[ID].getClient() 
-    def getDate(self,ID):              return self.__Vouchers[ID].getDate()     
-    def getCount(self,ID):             return self.__Vouchers[ID].getCount()   
-    def getDiscount(self,ID):          return self.__Vouchers[ID].getDiscount() 
+    def getRoute(self,ID):                  return self.__Vouchers[ID].getRoute()   
+    def getClient(self,ID):                 return self.__Vouchers[ID].getClient() 
+    def getDate(self,ID):                   return self.__Vouchers[ID].getDate()     
+    def getCount(self,ID):                  return self.__Vouchers[ID].getCount()   
+    def getDiscount(self,ID):               return self.__Vouchers[ID].getDiscount() 
 
     # --------- ---------
 
@@ -267,42 +258,23 @@ class DataBase:
     # ---------
 
     def removeClient(self,ID): 
-        N = 0
         for ITEM in self.__Client:
             if(ITEM.getID() == ID): 
                 for I in self.__Vouchers:
-                    if(I.getClient() == ITEM):
-                        print("ERROR: Ошибка удаления")
-                        return 0
-                self.__Client.pop(N)
-                return 0
-            N+=1
+                    if(I.getClient() == ITEM): print("ERROR: Ошибка удаления"); return 0
+                self.__Client.pop(ITEM.getID() - 1); return 0
        
     def removeRoute(self,ID): 
-        N = 0
         for ITEM in self.__Route:
             if(ITEM.getID() == ID):
                 for I in self.__Vouchers:
-                    if(I.getRoute() == ITEM):
-                        print("ERROR: Ошибка удаления")
-                        return 0
-                self.__Route.pop(N)
-                return 0
-            N+=1
+                    if(I.getRoute() == ITEM):  print("ERROR: Ошибка удаления"); return 0
+                self.__Route.pop(ITEM.getID() - 1); return 0
 
     def removeVouchers(self, ID): 
-        N = 0
         for ITEM in self.__Vouchers:
-            if(ITEM.getID() == ID): 
-                self.__Vouchers.pop(N)
-                return 0
-            N+=1
-
-    # ---------
-
-    def getClient(self):    return self.__Client
-    def getRoute(self):     return self.__Route
-    def getVouchers(self):  return self.__Vouchers 
+            if(ITEM.getID() == ID): self.__Vouchers.pop(ITEM.getID() - 1); return 0
+    
 
 # --------------------------------------------------------------------------------------------------
 

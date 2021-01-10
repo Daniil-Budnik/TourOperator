@@ -180,15 +180,9 @@ class DataBase:
     def getRouteList(self):                 return self.__Route
     def getVouchersList(self):              return self.__Vouchers 
 
-    # ---------
-
-    def setClientDataBase(self, value):     self.__Client = value
-    def setRouteDataBase(self, value):      self.__Route = value
-    def setVouchersDataBase(self, value):   self.__Vouchers = value
-
-    def getClientDataBase(self):            return self.__Client
-    def getRouteDataBase(self):             return self.__Route
-    def getVouchersDataBase(self):          return self.__Vouchers
+    def setClientList(self, value):         self.__Client = value
+    def setRouteList(self, value):          self.__Route = value
+    def setVouchersListself, value):        self.__Vouchers = value
 
      # --------- 
 
